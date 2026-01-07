@@ -17,6 +17,23 @@
 			return e;
 		}
 EOF}}"></script>
+	<script src="data:text/javascript;base64,{{base64 --wrap=0 <<'EOF'
+		try{
+			if(window.location.protocol == "https:" && window.location.hostname == "jhcarl0814.github.io" && window.location.port == "" && (window.location.pathname == "/" || window.location.pathname == "/index.html")){
+				document.head.insertBefore(create_element("script", {}, { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-ZHJ8ZJK2B8", }), document.head.childNodes.item(0));
+				document.head.insertBefore(create_element("script", {}, {}, [ document.createTextNode(`
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+
+					gtag('config', 'G-ZHJ8ZJK2B8');
+				`), ]), document.head.childNodes.item(1));
+			}
+		}
+		finally{
+			document.currentScript.remove();
+		}
+EOF}}"></script>
 	<base target="_blank">
 </head>
 <body class="m-[8px]">
