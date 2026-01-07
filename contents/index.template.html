@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Defines the criteria for categorizing topics and serves as a central hub, linking to my specific pages on different topics">
+	<title>jhcarl0814.github.io</title>
+	<link rel="icon" href="data:image/bmp;base64,{{base64 --wrap=0 <'./favicon.bmp'}}">
+	<link rel="stylesheet" href="data:text/css;base64,{{ '../tools/tailwindcss/tailwindcss-windows-x64.exe' --input='./index.css' --minify 2>/dev/null | base64 --wrap=0 }}">
+	<script src="data:text/javascript;base64,{{base64 --wrap=0 <<'EOF'
+		function create_element(tagName, properties = {}, attributes = {}, children = [], callback = function(e){}){ // https://stackoverflow.com/questions/7006253/javascript-dom-how-to-handle-special-properties-as-versus-attributes
+			let e = document.createElement(tagName);
+			Object.assign(e, properties);
+			Object.entries(attributes).forEach(Function.prototype.apply.bind(Element.prototype.setAttribute.bind(e), null));
+			e.replaceChildren(...children);
+			callback(e);
+			return e;
+		}
+EOF}}"></script>
+	<base target="_blank">
+</head>
+<body class="m-[8px]">
+	This page (https://jhcarl0814.github.io/) defines the criteria for categorizing topics and serves as a central hub, linking to my specific pages on different topics.
+	<ul class="list-disc list-outside ml-[2em]">
+		<li>
+			<dl>
+				<dt>ClosedAI</dt>
+				<dd class="opacity-[0.3] flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Formal science (<span class="highlight_yellow">theories can be proven or disproven</span>);</div></dd>
+				<dd class="opacity-[0.3] flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Engineering, deterministic tools (follow the instructions to make things work, disregard the instructions to screw things up);</div></dd>
+				<dd class="opacity-[0.3] flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']">
+					<div class="basis-[0px] grow">
+						Examples:
+						<ul class="list-disc list-outside ml-[2em]">
+							<li>Abstract concepts and reasoning/inference/operation thereon;</li>
+							<li>Boolean logic, sequential logic, lambda calculus, etc;</li>
+							<li>Structured sequential programming (without <span class="inline_code">goto</span>s), structured parallel programming (only simple control flow, e.g. call/return, parallel calls, and pipelines, possibly also fan-in and fan-out);</li>
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<ul class="list-disc list-outside ml-[2em]">
+				<li><a href="https://jhcarl0814.github.io/ClosedAI/git/git.html">Git Help Desk</a>: The ultimate help center for Git users, introducing concepts/terminologies in a pedagogically sound order and illustrating command options and their combinations/interactions with examples.</li>
+			</ul>
+		</li>
+		<li class="opacity-[0.3]">
+			<dl>
+				<dt>ClosedAJ</dt>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Natural science (<span class="highlight_yellow">theories cannot be proven but can be disproven</span>);</div></dd>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Engineering, zero-order systems;</div></dd>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']">
+					<div class="basis-[0px] grow">
+						Examples:
+						<ul class="list-disc list-outside ml-[2em]">
+							<li>Attributes of physical entities (density, transmittance, resistivity, hardness, Young's modulus, Poisson's ratio, yield strength, Martin deflection temperature, dielectric constant, relative magnetic permeability, viscoelastic parameters, molecular structure, acid resistance, alkali resistance, UV resistance, creep properties, static friction coefficient, sliding friction coefficient, color, refractive index, molecular polarity, high-frequency loss angle, air permeability, air absorption rate, water absorption rate, color, taste, odor, price, specific gravity, molecular weight);</li>
+							<li>Relations between physical quantities (e.g. <math><mrow><mi>I</mi><mo>=</mo><mfrac><mi>U</mi><mi>R</mi></mfrac></mrow></math>);</li>
+							<li>Unstructured sequential programming (with <span class="inline_code">goto</span>s);</li>
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<ul class="list-disc list-outside ml-[2em]">
+			</ul>
+		</li>
+		<li class="opacity-[0.3]">
+			<dl>
+				<dt>ClosedAK</dt>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Engineering, high-order (multivariable, multidimensional, multirelationship, multi-abstraction, etc) systems;</div></dd>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']">
+					<div class="basis-[0px] grow">
+						Examples:
+						<ul class="list-disc list-outside ml-[2em]">
+							<li>(After adding some inductors and capacitors to the circuit) delay, overcharge, oscillation, negative resistance area (the higher the voltage, the smaller the current);</li>
+							<li>Unstructured parallel programming (arbitrary control flow);</li>
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<ul class="list-disc list-outside ml-[2em]">
+			</ul>
+		</li>
+		<li class="opacity-[0.3]">
+			<dl>
+				<dt>ClosedAL</dt>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Social science (<span class="highlight_yellow">theories can be proven but cannot be disproven</span>);</div></dd>
+			</dl>
+			<ul class="list-disc list-outside ml-[2em]">
+			</ul>
+		</li>
+		<li>
+			<dl>
+				<dt>ClosedBI</dt>
+				<dd class="opacity-[0.3] flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Useful conventions;</div></dd>
+				<dd class="opacity-[0.3] flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']">
+					<div class="basis-[0px] grow">
+						Examples:
+						<ul class="list-disc list-outside ml-[2em]">
+							<li>Using IPA to learn pronunciation of a foreign language to orally communicate with foreigners is useful, but when (in the future) devices for brain-to–brain communication emerges it becomes redundant;</li>
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<ul class="list-disc list-outside ml-[2em]">
+				<li><a href="https://jhcarl0814.github.io/ClosedBI/ipa/ipa.html">IPA Help Desk</a>: IPA chart that integrates audio, Unicode, diagrams, fonts, and user-embeddable examples, all on a single page and controllable via query parameters when sharing URLs.</li>
+			</ul>
+		</li>
+		<li class="opacity-[0.3]">
+			<dl>
+				<dt>ClosedBJ</dt>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Theology (<span class="highlight_yellow">theories cannot be proven or disproven</span>);</div></dd>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Unuseful conventions;</div></dd>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']"><div class="basis-[0px] grow">Fuzzy concepts;</div></dd>
+				<dd class="flex items-start before:inline-block before:basis-[2em] before:grow-0 before:text-center before:content-['≝']">
+					<div class="basis-[0px] grow">
+						Examples:
+						<ul class="list-disc list-outside ml-[2em]">
+							<li>Claiming "god created life" without first defining "what is god", "what is create" or "what is life";</li>
+							<li>Claiming "to be patriot" without first defining "what is country" (geographical location, territory, political power, sovereignty, feudal fiefdom, homeland, a walled city, an ethnic community, population &amp; war generation device (superstition complex &amp; military-industrial complex), financial support device (white leftist ＊ewish financial complex), science and technology innovation device (silicon valley H1B slave labor complex), vested interest stakeholders (large families/companies voting/lobbying complex), or a combination of various complex things);</li>
+						</ul>
+					</div>
+				</dd>
+			</dl>
+		</li>
+	</ul>
+</body>
+</html>

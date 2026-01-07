@@ -1,0 +1,91 @@
+#!/bin/bash
+
+#function awk_expand_commands () {
+#	(
+		realpath_dollar_1="$(realpath "$1")";
+		cd "$(dirname "$realpath_dollar_1")" &&
+		{ cat './'"$(basename "$realpath_dollar_1")"; printf '\n'; } | # https://stackoverflow.com/a/76165143/8343353
+		awk '
+		BEGIN {
+			RS = "\n";
+			FS = "\n";
+			while (getline == 1) {
+				while (1) {
+					if (match($0, /\{([_a-zA-Z][_a-zA-Z0-9]*)?\{/, groups) != 0) {
+						printf("%s%s", last_record_separator, substr($0, 1, RSTART-1));
+						command_delimiter = groups[1];
+						$0 = substr($0, RSTART + RLENGTH);
+						last_record_separator = "";
+					}
+					else {
+						printf("%s%s", last_record_separator, $0);
+						last_record_separator = RS;
+						break;
+					}
+					while (1) {
+						if ((RSTART = index($0, "}" command_delimiter "}")) != 0) {
+							accumulated_command = accumulated_command last_record_separator substr($0, 1, RSTART-1);
+							$0 = substr($0, RSTART + length(command_delimiter) + 2);
+
+							system(accumulated_command);
+
+							accumulated_command = "";
+							last_record_separator = "";
+							break;
+						}
+						else {
+							accumulated_command = accumulated_command last_record_separator $0;
+							last_record_separator = RS;
+							if (getline != 1)
+								exit 1;
+						}
+					}
+				}
+			}
+			exit
+		}
+		BEGIN {
+			cursor_is_inside_command = 0;
+		}
+		{
+			if (cursor_is_inside_command == 1) {
+				RSTART = index($0, "}" command_delimiter "}");
+				if (RSTART != 0) {
+					accumulated_command = accumulated_command last_record_separator substr($0, 1, RSTART-1);
+					$0 = substr($0, RSTART + length(command_delimiter) + 2);
+					system(accumulated_command);
+					accumulated_command = "";
+					cursor_is_inside_command = 0;
+					last_record_separator = "";
+				}
+				else {
+					accumulated_command = accumulated_command last_record_separator $0;
+					last_record_separator = ORS;
+					next;
+				}
+			}
+			printf "%s", last_record_separator;
+			while(match($0, /\{([_a-zA-Z][_a-zA-Z0-9]*)?\{/)) {
+				printf "%s", substr($0, 1, RSTART-1);
+				command_delimiter = substr($0, RSTART + 1, RLENGTH - 2);
+				$0 = substr($0, RSTART + RLENGTH);
+
+				RSTART = index($0, "}" command_delimiter "}");
+				if(RSTART != 0) {
+					system(substr($0, 1, RSTART-1));
+					$0 = substr($0, RSTART + length(command_delimiter) + 2);
+				}
+				else {
+					accumulated_command = $0;
+					$0 = "";
+					cursor_is_inside_command = 1;
+					break;
+				}
+			}
+			printf "%s", $0;
+			last_record_separator = ORS;
+		}
+		'
+#	);
+#}
+#export -f awk_expand_commands

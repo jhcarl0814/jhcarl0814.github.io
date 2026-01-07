@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#function awk_expand_commands () {
+#	(
+		realpath_dollar_1="$(realpath "$1")";
+		cd "$(dirname "$realpath_dollar_1")" &&
+		awk --file '/dev/fd/3' 3<<-'EOF' 0<'./'"$(basename "$realpath_dollar_1")"
+		BEGIN {
+			RS = "\n";
+			FS = "\n";
+			while (getline == 1) {
+				while (1) {
+					if (match($0, /\{([_a-zA-Z][_a-zA-Z0-9]*)?\{/, groups) != 0) {
+						printf("%s", substr($0, 1, RSTART-1));
+						command_delimiter = groups[1];
+						$0 = substr($0, RSTART + RLENGTH);
+					}
+					else {
+						printf("%s%s", $0, RT);
+						break;
+					}
+					while (1) {
+						if ((RSTART = index($0, "}" command_delimiter "}")) != 0) {
+							accumulated_command = accumulated_command substr($0, 1, RSTART-1);
+							$0 = substr($0, RSTART + length(command_delimiter) + 2);
+
+							#system(accumulated_command);
+							printf("%s", accumulated_command) |& "exec \"$SHELL\" -s";
+							close("exec \"$SHELL\" -s", "to");
+							RT_old = RT;
+							while(("exec \"$SHELL\" -s" |& getline line) == 1) {
+								printf("%s%s", line, RT);
+							}
+							RT = RT_old;
+							close("exec \"$SHELL\" -s");
+
+							accumulated_command = "";
+							break;
+						}
+						else {
+							accumulated_command = accumulated_command $0 RT;
+							if (getline != 1)
+								exit 1;
+						}
+					}
+				}
+			}
+		}
+EOF
+#	);
+#}
+#export -f awk_expand_commands
